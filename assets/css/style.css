@@ -1,0 +1,36 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+
+img {
+    height: 100px;
+}
+
+h3 {
+    text-align: center;
+}
+
+#newGame {
+    margin: 30px 0px 30px 0px;
+    padding: 5px 5px;
+    align-content: center;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+#newGame:hover {
+    border: 2px solid black;
+}
+
+button {
+
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        font: inherit;
+
+}
