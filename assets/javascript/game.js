@@ -57,14 +57,14 @@ display_letters: function (){
 game_logic: function(event) {
     var userGuess = event.target.innerText;
     var btnClicked = ("btn-" + event);
+    $("#"+btnClicked).attr("disabled", "disabled");
+    $("#"+btnClicked).css("background-color", "red");
     for (i=0; i<this.randMovie.length; i++) {
         if ((userGuess == this.randMovie.charAt(i)) && (this.selectedArray.indexOf(userGuess)<0)) {
             this.selectedArray.push(userGuess);
             this.underArray[i] = userGuess;
             this.underString = this.underArray.join ("");
             $("#underscores").html(this.underString);
-            $("#"+btnClicked).attr("disabled", "disabled");
-            $("#"+btnClicked).attr("color", "red");
             
             
 
