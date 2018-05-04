@@ -64,6 +64,8 @@ game_logic: function(event) {
             this.underString = this.underArray.join ("");
             $("#underscores").html(this.underString);
             $("#"+btnClicked).attr("disabled", "disabled");
+            $("#"+btnClicked).attr("color", "red");
+            
             
 
             
