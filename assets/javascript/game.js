@@ -25,7 +25,7 @@ display_underscores: function (){
         if (this.randMovie[i] !== "_") {
             this.underArray.push("_ ")
         } else {
-            this.underArray.push("<br>");
+            this.underArray.push("<br> <br>");
         }
     }
     this.underString = this.underArray.join("");
@@ -112,9 +112,9 @@ game_logic: function(event) {
         this.start_game();
     }
     
-    if (this.underArray.indexOf("__ ")<0){
+    if (this.underArray.indexOf("_ ")<0){
         alert("You WON!!");
-        this.wins++;
+        this.wins+=1;
         this.display_wins();
         this.start_game();
     }
@@ -127,7 +127,6 @@ start_game: function(event) {
     this.pick_movie();
     this.display_underscores();
     this.display_letters();
-    this.wins = 0;
     this.display_lives();
     this.display_wins();
     this.display_tried();
@@ -138,6 +137,7 @@ start_game: function(event) {
 $(document).ready(function() {
 
     $('#newGame').on("click", function() {
+        mobile.wins = 0;
         mobile.start_game(event);
     
     });
