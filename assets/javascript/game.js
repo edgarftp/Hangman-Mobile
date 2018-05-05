@@ -5,8 +5,13 @@ moviesArray: ["the_shape_of_water", "moonlight","spotlight","birdman", "12_years
 randMovie: "",
 underArray: [],
 underString: "",
-lettersArray : ["a ","b ","c ","d ","e ","f ","g ","h ","i ","j ","k ","l ","m ","n ","o ","p ","q ","r ","s ","t ","u ","v ","w ","x ","y ","z",],
+lettersArray : ["1","2","3","4","5","6","7","8","9","0","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",],
 selectedArray: [],
+lives: 5,
+wins: 0,
+triedArray: [],
+triedString: "",
+
 
 pick_movie: function () {
     this.rand = Math.floor(Math.random() * this.moviesArray.length);
@@ -15,6 +20,7 @@ pick_movie: function () {
 
 display_underscores: function (){
     this.underArray.length = 0;
+    
     for (i=0 ; i<this.randMovie.length ; i++ ) {
         if (this.randMovie[i] !== "_") {
             this.underArray.push("__ ")
@@ -30,6 +36,7 @@ display_underscores: function (){
 
 display_letters: function (){
     var newBtn = "" ;
+    $("#letterHolder0").empty();
     $("#letterHolder1").empty();
     $("#letterHolder2").empty();
     $("#letterHolder3").empty();
@@ -39,9 +46,14 @@ display_letters: function (){
             newBtn.attr("id", "btn-" + this.lettersArray[i]);
             newBtn.text(this.lettersArray[i]);
             $(newBtn).attr("margin-right", "40px");
-            $('#letterHolder1').append(newBtn);
+            $('#letterHolder0').append(newBtn);
         }
-        else if (i>9 && i<19) {
+        else if (i>9 && i<20) {
+            newBtn = $('<button>');
+            newBtn.text(this.lettersArray[i]);
+            $('#letterHolder1').append(newBtn);
+        } 
+        else if (i>19 && i<29){
             newBtn = $('<button>');
             newBtn.text(this.lettersArray[i]);
             $('#letterHolder2').append(newBtn);
@@ -54,31 +66,69 @@ display_letters: function (){
     
 
 }, 
+display_lives: function () {
+    $("#lives").text(this.lives + "  Remaining lives");
+},
+display_tried: function () {
+    this.triedArray.length = 0;
+    this.triedString = "";
+    $("#tried").html("You have tried: " + this.triedString);
+},
+
+display_wins: function() {
+    if (this.wins == 1){
+    $("#wins").text(this.wins + "  Win");
+    } else {
+    $("#wins").text(this.wins + "  Wins");
+    }
+},
 game_logic: function(event) {
     var userGuess = event.target.innerText;
-    var btnClicked = ("btn-" + event);
-    $("#"+btnClicked).attr("disabled", "disabled");
-    $("#"+btnClicked).css("background-color", "red");
+    var boolGuess = true;
+    $("#lives").text(this.lives + "Remaining lives");
     for (i=0; i<this.randMovie.length; i++) {
         if ((userGuess == this.randMovie.charAt(i)) && (this.selectedArray.indexOf(userGuess)<0)) {
-            this.selectedArray.push(userGuess);
             this.underArray[i] = userGuess;
             this.underString = this.underArray.join ("");
             $("#underscores").html(this.underString);
-            
-            
-
+            boolGuess = false;
+            this.display_lives();
             
         }
     }
+
+    if (boolGuess) {
+        this.lives-=1;
+        this.display_lives();
+        this.triedArray.push(userGuess + "&nbsp;" );
+        this.triedString = this.triedArray.join("")
+        this.display_tried();
+        
+    }
+
+    if (this.lives == 0) {
+        alert("L O S E R");
+        this.start_game();
+    }
+    
+    if (this.underArray.indexOf("__ ")<0){
+        alert("You WON!!");
+        this.wins++;
+        this.display_wins();
+        this.start_game();
+    }
 },
 
-start_game: function(event){
+start_game: function(event) {
     this.pick_movie();
     this.display_underscores();
     this.display_letters();
-
+    this.wins = 0;
+    this.display_lives();
+    this.display_wins();
+    this.display_tried();
 }
+
 };
 
 $(document).ready(function() {
@@ -89,8 +139,11 @@ $(document).ready(function() {
     });
 
     $("#gameArea").on("click", function(event) {
-        console.log(event);
-        mobile.game_logic(event);
+        if (mobile.lettersArray.indexOf(event.target.innerText) != -1){
+            $(event.target).hide();
+            mobile.game_logic(event);
+        
+        }
         
     });
 });

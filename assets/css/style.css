@@ -13,11 +13,23 @@ h3 {
 }
 
 #newGame {
-    margin: 30px 0px 30px 0px;
+    margin: 30px 0px 10px 0px;
     padding: 5px 5px;
     align-content: center;
     font-family: 'Courier New', Courier, monospace;
 
+}
+
+#lives {
+    margin: 10px 0px;
+}
+#wins {
+    margin: 10px 0px;
+}
+
+#tried {
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 #newGame:hover {
