@@ -45,7 +45,6 @@ display_letters: function (){
             newBtn = $('<button>');
             newBtn.attr("id", "btn-" + this.lettersArray[i]);
             newBtn.text(this.lettersArray[i]);
-            $(newBtn).attr("margin-right", "40px");
             $('#letterHolder0').append(newBtn);
         }
         else if (i>9 && i<20) {
@@ -66,9 +65,11 @@ display_letters: function (){
     
 
 }, 
+
 display_lives: function () {
     $("#lives").text(this.lives + "  Remaining lives");
 },
+
 display_tried: function () {
     this.triedArray.length = 0;
     this.triedString = "";
@@ -82,6 +83,7 @@ display_wins: function() {
     $("#wins").text(this.wins + "  Wins");
     }
 },
+
 game_logic: function(event) {
     var userGuess = event.target.innerText;
     var boolGuess = true;
