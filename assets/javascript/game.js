@@ -44,20 +44,27 @@ display_letters: function (){
         if (i<10){
             newBtn = $('<button>');
             newBtn.attr("id", "btn-" + this.lettersArray[i]);
+            newBtn.attr("class", "letterBtn");
             newBtn.text(this.lettersArray[i]);
             $('#letterHolder0').append(newBtn);
         }
         else if (i>9 && i<20) {
             newBtn = $('<button>');
+            newBtn.attr("id", "btn-" + this.lettersArray[i]);
+            newBtn.attr("class", "letterBtn");
             newBtn.text(this.lettersArray[i]);
             $('#letterHolder1').append(newBtn);
         } 
         else if (i>19 && i<29){
             newBtn = $('<button>');
+            newBtn.attr("id", "btn-" + this.lettersArray[i]);
+            newBtn.attr("class", "letterBtn");
             newBtn.text(this.lettersArray[i]);
             $('#letterHolder2').append(newBtn);
         } else {
             newBtn = $('<button>');
+            newBtn.attr("id", "btn-" + this.lettersArray[i]);
+            newBtn.attr("class", "letterBtn");
             newBtn.text(this.lettersArray[i]);
             $('#letterHolder3').append(newBtn);
         }
