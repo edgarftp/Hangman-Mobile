@@ -144,7 +144,8 @@ $(document).ready(function() {
 
     $("#gameArea").on("click", function(event) {
         if (mobile.lettersArray.indexOf(event.target.innerText) != -1){
-            $(event.target).hide();
+            $(event.target).attr("disabled", true);
+            $(event.target).animate({opacity: 0.1}, "fast");
             mobile.game_logic(event);
         
         }
