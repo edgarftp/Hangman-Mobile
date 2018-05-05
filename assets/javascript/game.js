@@ -71,8 +71,7 @@ display_lives: function () {
 },
 
 display_tried: function () {
-    this.triedArray.length = 0;
-    this.triedString = "";
+    
     $("#tried").html("You have tried: " + this.triedString);
 },
 
@@ -122,6 +121,8 @@ game_logic: function(event) {
 },
 
 start_game: function(event) {
+    this.triedArray.length = 0;
+    this.triedString = "";
     this.pick_movie();
     this.display_underscores();
     this.display_letters();
