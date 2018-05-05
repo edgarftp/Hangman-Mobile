@@ -23,9 +23,9 @@ display_underscores: function (){
     
     for (i=0 ; i<this.randMovie.length ; i++ ) {
         if (this.randMovie[i] !== "_") {
-            this.underArray.push("__ ")
+            this.underArray.push("_ ")
         } else {
-            this.underArray.push("&nbsp;" + "&nbsp;" + "&nbsp;");
+            this.underArray.push("<br>");
         }
     }
     this.underString = this.underArray.join("");
@@ -123,6 +123,7 @@ game_logic: function(event) {
 start_game: function(event) {
     this.triedArray.length = 0;
     this.triedString = "";
+    $("#banner").hide();
     this.pick_movie();
     this.display_underscores();
     this.display_letters();
