@@ -11,9 +11,14 @@ img {
 h3 {
     text-align: center;
 }
-
+#desktop {
+    margin: 5px 0px 10px 0px;
+    padding: 5px 5px;
+    align-content: center;
+    font-family: 'Courier New', Courier, monospace;
+}
 #newGame {
-    margin: 10px 0px 10px 0px;
+    margin: 5px 0px 10px 0px;
     padding: 5px 5px;
     align-content: center;
     font-family: 'Courier New', Courier, monospace;
@@ -31,13 +36,14 @@ h3 {
     margin-top: 10px;
     font-weight: bold;
 }
-
+#desktop:hover {
+    border: 2px solid black;
+}
 #newGame:hover {
     border: 2px solid black;
 }
 
 button {
-
     background: none;
     color: inherit;
     border: none;
@@ -48,4 +54,17 @@ button {
 #gameArea {
     padding-top: 15px;
 }
+a {
+    text-decoration: none;
+    color: #2a56c8;
+    font-weight: 600;
 
+}
+a:linked {
+    text-decoration: none;
+    color: #2a56c8;
+}
+a:visited {
+    text-decoration: none;
+    color: #2a56c8;
+}
