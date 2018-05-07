@@ -116,20 +116,46 @@ game_logic: function(event) {
 
     if (this.lives == 0) {
         alert("L O S E R");
-        this.start_game();
+        this.start_game_lose();
     }
     
     if (this.underArray.indexOf("_ ")<0){
         alert("You WON!!");
         this.wins+=1;
         this.display_wins();
-        this.start_game();
+        this.start_game_win();
     }
 },
 
 start_game: function(event) {
     this.triedArray.length = 0;
     this.triedString = "";
+    $("#banner").hide();
+    this.pick_movie();
+    this.display_underscores();
+    this.display_letters();
+    this.display_lives();
+    this.display_wins();
+    this.display_tried();
+},
+start_game_lose: function () {
+    this.triedArray.length = 0;
+    this.triedString = "";
+    this.wins = 0;
+    this.lives = 5;
+    $("#banner").hide();
+    this.pick_movie();
+    this.display_underscores();
+    this.display_letters();
+    this.display_lives();
+    this.display_wins();
+    this.display_tried();
+},
+
+start_game_win: function (){
+    this.triedArray.length = 0;
+    this.triedString = "";
+    this.lives = 5;
     $("#banner").hide();
     this.pick_movie();
     this.display_underscores();
